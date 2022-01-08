@@ -1,19 +1,15 @@
 import React from 'react';
-import { Button } from 'antd';
-import './App.less';
-
-import logo from './logo.svg';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import HomePage from './components/HomePage';
+import ExtraPage from './components/ExtraPage';
 
 export default class App extends React.Component {
   render() {
-    return <div className="App">
-      <header className="">
-      <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    <Button type="primary">Button</Button>
-  </div>;
+    return <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />}/>
+        <Route path="/extra" element={<ExtraPage />} />
+    </Routes>
+  </BrowserRouter>;
   }
 }
