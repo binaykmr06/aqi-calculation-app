@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Layout, Button, Card, Form, Input, Select, Statistic, Row, Col } from 'antd';
+import { Layout, Button, Card, Form, Input, Select, Statistic, Row, Col, Typography } from 'antd';
 import '../styles/App.less';
 import NavBar from './NavBar';
+
+const { Content } = Layout;
+const { Title, Text } = Typography;
+
 
 const tabList = [
 	{
@@ -14,8 +18,6 @@ const tabList = [
 		tab: 'Concentration to AQI',
 	},
 ];
-
-const { Content } = Layout;
 
 export default class AQICalculation extends React.Component {
 	constructor(props) {
@@ -69,14 +71,11 @@ export default class AQICalculation extends React.Component {
 						{(() => {
 							if(this.state.activeTabKey == 'aqi_conc') {
 								return <div>
+									<Title level={4}>AQI to Concentration Calculator</Title>
+									<Title level={5}>DIRECTIONS: Select a pollutant, then enter the AQI value. Click on <Text code>Calculate</Text> to see the results.</Title>
 									<Form
-										name="basic"
-										// labelCol={{
-										//   span: 5,
-										// }}
-										// wrapperCol={{
-										//   span: 19,
-										// }}
+										name="aqi_to_conc"
+										className='margin-top-45'
 										layout="vertical"
 										requiredMark={false}
 										initialValues={{
@@ -114,7 +113,7 @@ export default class AQICalculation extends React.Component {
 												},
 											]}
 										>
-											<Input />
+											<Input placeholder="eg: 10"/>
 										</Form.Item>
 										<Form.Item
 											// wrapperCol={{
@@ -123,7 +122,7 @@ export default class AQICalculation extends React.Component {
 											// }}
 										>
 											<Button className='margin-right-8' type="primary" htmlType="submit">
-												Submit
+												Calculate
 											</Button>
 											<Button htmlType="button" onClick={() => this.onReset()}>
 											Reset
@@ -157,14 +156,11 @@ export default class AQICalculation extends React.Component {
 								</div>;
 							} else {
 								return <div>
+									<Title level={4}>Concentration to AQI Calculator</Title>
+									<Title level={5}>DIRECTIONS: Select a pollutant, then enter the Concentration value. Click on <Text code>Calculate</Text> to see the results.</Title>
 									<Form
-										name="basic"
-										// labelCol={{
-										//   span: 5,
-										// }}
-										// wrapperCol={{
-										//   span: 19,
-										// }}
+										name="conc_to_aqi"
+										className='margin-top-45'
 										layout="vertical"
 										requiredMark={false}
 										initialValues={{
@@ -195,9 +191,8 @@ export default class AQICalculation extends React.Component {
 										<Form.Item
 											label="Units"
 											name="units"
-											disabled={true}
 										>
-											<Input />
+											<Input placeholder="ug/m3" disabled/>
 										</Form.Item>
 										<Form.Item
 											label="Enter the Concentration"
@@ -209,7 +204,7 @@ export default class AQICalculation extends React.Component {
 												},
 											]}
 										>
-											<Input />
+											<Input placeholder="eg: 10"/>
 										</Form.Item>
 										<Form.Item
 											// wrapperCol={{
@@ -218,7 +213,7 @@ export default class AQICalculation extends React.Component {
 											// }}
 										>
 											<Button className='margin-right-8' type="primary" htmlType="submit">
-												Submit
+												Calculate
 											</Button>
 											<Button htmlType="button" onClick={() => this.onReset()}>
 											Reset
