@@ -6,12 +6,12 @@ body {
 
 h1 {
   font-size: 40px;
-  color: white;
+  color: #ffffff;
 }
 
 h2 {
   font-size: 32px;
-  color: white;
+  color: #ffffff;
 }
 
 .App {
@@ -29,8 +29,20 @@ h2 {
   width: auto;
 }
 
+.padding-20 {
+  padding: 20px;
+}
+
+.padding-left-10 {
+  padding-left: 10px;
+}
+
 .text-center {
   text-align: center;
+}
+
+.margin-right-8 {
+  margin-right: 8px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -75,8 +87,102 @@ h2 {
 }
 
 .ant-menu-horizontal {
-  width: 212px;
+  // width: 212px;
     float: right;
+}
+
+.home-page {
+  height: calc(100vh - 115px);
+  background-color: #ffffff;
+  margin: 25px;
+  position: relative;
+}
+
+.parameters-card {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f0f2f5;
+  width: calc(100vw - 30%);
+
+  .parameters-card-with-margin {
+    background-color: #fff;
+    margin: 20px;
+
+    .parameter-row {
+      padding-left: 15px;
+      padding-right: 15px;
+
+      .aqi-scale {
+        .aqi-parameter-scale {
+          background: #FFFFFF;
+          box-shadow: 0px 0px 16px rgb(0 0 0 / 8%);
+          border-radius: 8px;
+          height: 76px;
+          position: relative;
+          margin-top: 15px;
+
+          .aqi-parameter-image {
+            padding-top: 4px;
+          }
+
+          .aqi-parameter-value-range {
+            position: absolute;
+            top: 45%;
+            left: 8%;
+            transform: translate(0px, -50%);
+            margin: 0px 8px;
+
+            .aqi-parameter-value-range-text {
+              margin-right: 22px;
+              margin-left: 18px;
+              margin-top: 12px;
+              font-size: 14px;
+              font-weight: 600;          
+            }
+
+            .aqi-parameter-value-range-text1 {
+              font-size: 12px;
+              font-weight: 600;
+              text-align: center;       
+            }
+          }
+
+          .aqi-parameter-message {
+            font-size: 16px;
+            color: #555555;
+            padding: 5px 5px 5px 5px;
+            position: absolute;
+            top: 50%;
+            left: 150px;
+            transform: translate(0px, -50%);
+          }
+        }
+      }
+    }
+
+    .parameters-card-header {
+      padding: 10px 10px;
+  
+      .parameters-heading {
+        font-weight: 600;
+        font-size: 24px;
+        margin-bottom: 5px;
+        display: table;
+        margin: auto;
+      }
+  
+      .parameters-text {
+        font-size: 20px;
+        opacity: 0.7;
+        display: table;
+        margin: auto;
+      }
+    }
+  }
+
 }
 
 @keyframes App-logo-spin {

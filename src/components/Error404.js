@@ -6,6 +6,11 @@ import NavBar from './NavBar';
 const { Content } = Layout;
 
 export default class Error404 extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+      }
+      
 	render() {
 		return <Layout>
 			<NavBar activePage=""/>
