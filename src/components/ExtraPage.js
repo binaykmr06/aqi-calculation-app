@@ -1,13 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+import { Layout, Button } from 'antd';
 import '../styles/App.less';
+import NavBar from './NavBar';
 
 import logo from '../assects/images/logo.svg';
 
+const { Content } = Layout;
+
+
 export default class ExtraPage extends React.Component {
   render() {
-    return <div className="App">
+    return <Layout>
+    <NavBar activePage="extra"/>
+      <Content className='page-content'><div className="App">
       <header className="">
       <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -15,6 +21,6 @@ export default class ExtraPage extends React.Component {
         </p>
       </header>
     <Link to={'/'}><Button type="primary">Go to Home</Button></Link>
-  </div>;
+  </div></Content></Layout>;
   }
 }
