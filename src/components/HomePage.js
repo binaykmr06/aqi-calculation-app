@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Layout, Button, Row, Col } from 'antd';
+import { Layout, Row, Col } from 'antd';
 import NavBar from './NavBar';
 import cartton_shape_1 from '../assects/images/cartton_shape_1.webp';
 import cartton_shape_2 from '../assects/images/cartton_shape_2.webp';
@@ -32,7 +31,7 @@ export default class HomePage extends React.Component {
 								<Row className='parameter-row'>
 									<Col span={12} className='aqi-scale'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #39A033"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_1} style={{width:"38px", height: "67px"}} src={cartton_shape_1} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_1} style={{width:"38px", height: "67px"}} src={cartton_shape_1} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Good</div>
 												<div className='aqi-parameter-value-range-text1'>0-50</div>
@@ -42,7 +41,7 @@ export default class HomePage extends React.Component {
 									</Col>
 									<Col span={12} className='aqi-scale padding-left-10'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #D4CA2F"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_2} style={{width:"38px", height: "67px"}} src={cartton_shape_2} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_2} style={{width:"38px", height: "67px"}} src={cartton_shape_2} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Moderate</div>
 												<div className='aqi-parameter-value-range-text1'>51-100</div>
@@ -54,7 +53,7 @@ export default class HomePage extends React.Component {
 								<Row className='parameter-row'>
 									<Col span={12} className='aqi-scale'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #E75834"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_3} style={{width:"38px", height: "67px"}} src={cartton_shape_3} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_3} style={{width:"38px", height: "67px"}} src={cartton_shape_3} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Poor</div>
 												<div className='aqi-parameter-value-range-text1'>101-200</div>
@@ -64,7 +63,7 @@ export default class HomePage extends React.Component {
 									</Col>
 									<Col span={12} className='aqi-scale padding-left-10'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #EA519F"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_4} style={{width:"38px", height: "67px"}} src={cartton_shape_4} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_4} style={{width:"38px", height: "67px"}} src={cartton_shape_4} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Unhealthy</div>
 												<div className='aqi-parameter-value-range-text1'>201-300</div>
@@ -76,7 +75,7 @@ export default class HomePage extends React.Component {
 								<Row className='parameter-row'>
 									<Col span={12} className='aqi-scale'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #975AA0"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_5} style={{width:"38px", height: "67px"}} src={cartton_shape_5} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_5} style={{width:"38px", height: "67px"}} src={cartton_shape_5} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Severe</div>
 												<div className='aqi-parameter-value-range-text1'>301-400</div>
@@ -86,7 +85,7 @@ export default class HomePage extends React.Component {
 									</Col>
 									<Col span={12} className='aqi-scale padding-left-10'>
 										<div className='aqi-parameter-scale' style={{borderLeft: "16px solid #BF2133"}}>
-											<div className='aqi-parameter-image'><img data-src={cartton_shape_6} style={{marginLeft: "-10px", marginTop: "10px", width: "auto", height: "50px"}} src={cartton_shape_6} /></div>
+											<div className='aqi-parameter-image'><img alt='img' data-src={cartton_shape_6} style={{marginLeft: "-10px", marginTop: "10px", width: "auto", height: "50px"}} src={cartton_shape_6} /></div>
 											<div className='aqi-parameter-value-range'>
 												<div className='aqi-parameter-value-range-text'>Hazardous</div>
 												<div className='aqi-parameter-value-range-text1'>401-500</div>
