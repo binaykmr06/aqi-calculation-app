@@ -196,7 +196,7 @@ function PollutantUnit(paramIndex) {
 }
 
 // Calculate AQI
-function AQICalc (param, value) {
+function AQIConc (param, value) {
 	return new Promise(function(resolve, reject) {
 		let roundValue;
 		let concValue;
@@ -538,4 +538,4 @@ function AQICalc (param, value) {
 	});
 };
 
-module.exports = {AQICalc}
+module.exports = {AQIConc}

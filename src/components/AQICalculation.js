@@ -5,7 +5,7 @@ import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../styles/App.less';
 import NavBar from './NavBar';
 
-import {AQICalc} from '../assects/library/aqi_conc';
+import {AQIConc} from '../assects/library/aqi_conc';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -40,7 +40,7 @@ export default class AQICalculation extends React.Component {
 
 	async onFinish(values) {
 		console.log('Success:', values);
-		let displayData = await AQICalc(values['pollutant_name'],values['aqi_value']);
+		let displayData = await AQIConc(values['pollutant_name'],values['aqi_value']);
 		console.log('Success1:', displayData);
 		this.setState({
 			displayResult: displayData
