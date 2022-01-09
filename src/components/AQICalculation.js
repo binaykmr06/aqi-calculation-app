@@ -1,8 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { Layout, Button, Card, Form, Input, Select, Statistic, Row, Col, Typography } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import '../styles/App.less';
 import NavBar from './NavBar';
+
+import {AQICalc} from '../assects/library/aqi_conc';
 
 const { Content } = Layout;
 const { Title, Text } = Typography;
@@ -24,22 +27,25 @@ export default class AQICalculation extends React.Component {
 		super(props);
 		this.state = {
 			activeTabKey: 'aqi_conc',
-			pageData: null
+			displayResult: null
 		};
 	}
 
 	onTabChange = key => {
 		this.setState({
 			activeTabKey: key,
-			pageData: null
+			displayResult: null
 		});
 	};
 
-	onFinish = (values) => {
+	async onFinish(values) {
 		console.log('Success:', values);
+		let displayData = await AQICalc(values['pollutant_name'],values['aqi_value']);
+		console.log('Success1:', displayData);
 		this.setState({
-			pageData: true
+			displayResult: displayData
 		});
+
 	};
 	
 	onFinishFailed = (errorInfo) => {
@@ -50,7 +56,7 @@ export default class AQICalculation extends React.Component {
 		// form.resetFields();
 		console.log('Reset:');
 		this.setState({
-			pageData: null
+			displayResult: null
 		});
 	}
 
@@ -69,7 +75,7 @@ export default class AQICalculation extends React.Component {
 						}}
 					>
 						{(() => {
-							if(this.state.activeTabKey == 'aqi_conc') {
+							if(this.state.activeTabKey === 'aqi_conc') {
 								return <div>
 									<Title level={4}>AQI to Concentration Calculator</Title>
 									<Title level={5}>DIRECTIONS: Select a pollutant, then enter the AQI value. Click on <Text code>Calculate</Text> to see the results.</Title>
@@ -130,27 +136,34 @@ export default class AQICalculation extends React.Component {
 										</Form.Item>
 									</Form>
 									{(() => {
-										if(this.state.pageData) {
-											return <Row gutter={16}>
-												<Col span={12}>
-													<Statistic title="Concentration" value={"35.4"} valueStyle={{fontSize: '20px'}} />
-												</Col>
-												<Col span={12}>
-													<Statistic title="Units" value={"ug/m3"} valueStyle={{fontSize: '20px'}} />
-												</Col>
-												<Col span={12} className='margin-top-25'>
-													<Statistic title="AQI Category" value={"Moderate"} valueStyle={{ color: '#ffffff', fontSize: '20px', backgroundColor: '#cf1322', paddingLeft: '10px', paddingBottom: '4px'}} />
-												</Col>
-												<Col span={12} className='margin-top-25'>
-													<Statistic title="Sensitive Groups" value={"People with respiratory or heart disease, the elderly and children are the groups most at risk."} valueStyle={{fontSize: '20px'}} />
-												</Col>
-												<Col span={12} className='margin-top-25'>
-													<Statistic title="Health Effects Statements" value={"Unusually sensitive people should consider reducing prolonged or heavy exertion."} valueStyle={{fontSize: '20px'}} />
-												</Col>
-												<Col span={12} className='margin-top-25'>
-													<Statistic title="Cautionary Statements" value={"Unusually sensitive people should consider reducing prolonged or heavy exertion."} valueStyle={{fontSize: '20px'}} />
-												</Col>
-											</Row>;
+										if(this.state.displayResult != null) {
+											if(this.state.displayResult.messageType === "exception") {
+												return <div className='center'>
+													<ExclamationCircleOutlined style={{fontSize: "200px", color: "red"}}/>
+													<Row className='warning-text' dangerouslySetInnerHTML={{__html: this.state.displayResult.message}}/>
+												</div>
+											} else {
+												return <Row gutter={16}>
+													<Col span={12}>
+														<Statistic title="Concentration" value={this.state.displayResult.concentration} valueStyle={{fontSize: '20px'}} />
+													</Col>
+													<Col span={12}>
+														<Statistic title="Units" value={this.state.displayResult.unit} valueStyle={{fontSize: '20px'}} />
+													</Col>
+													<Col span={12} className='margin-top-25'>
+														<Statistic title="AQI Category" value={this.state.displayResult.aqiCategory} valueStyle={{ color: this.state.displayResult.fontColor, fontSize: '20px', backgroundColor: this.state.displayResult.backgroundColor, paddingLeft: '10px', paddingBottom: '4px'}} />
+													</Col>
+													<Col span={12} className='margin-top-25'>
+														<Statistic title="Sensitive Groups" value={this.state.displayResult.sensitiveGroups} valueStyle={{fontSize: '20px'}} />
+													</Col>
+													<Col span={12} className='margin-top-25'>
+														<Statistic title="Health Effects Statements" value={this.state.displayResult.healthEffectsStatements} valueStyle={{fontSize: '20px'}} />
+													</Col>
+													<Col span={12} className='margin-top-25'>
+														<Statistic title="Cautionary Statements" value={this.state.displayResult.cautionaryStatements} valueStyle={{fontSize: '20px'}} />
+													</Col>
+												</Row>;
+											}
 										}
 									})()}
 								</div>;
