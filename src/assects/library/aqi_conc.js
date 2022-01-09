@@ -1,7 +1,7 @@
 // parameter wise conc calculation
-function InvLinear(AQIhigh, AQIlow, Conchigh, Conclow, a) {
+function InvLinear(AQIhigh, AQIlow, Conchigh, Conclow, AQI) {
     var conc;
-    conc = ((a - AQIlow) / (AQIhigh - AQIlow)) * (Conchigh - Conclow) + Conclow;
+    conc = ((AQI - AQIlow) / (AQIhigh - AQIlow)) * (Conchigh - Conclow) + Conclow;
     return conc;
 }
 
