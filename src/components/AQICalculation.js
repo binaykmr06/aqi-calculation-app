@@ -50,6 +50,7 @@ export default class AQICalculation extends React.Component {
 		} else {
 			displayData = await ConcAQI(values['pollutant_name'], values['conc_value']);
 		}
+		console.log('displayData', displayData);
 
 		this.setState({
 			displayResult: displayData
@@ -173,10 +174,10 @@ export default class AQICalculation extends React.Component {
 														<Statistic title="Sensitive Groups" value={this.state.displayResult.sensitiveGroups} valueStyle={{fontSize: '20px'}} />
 													</Col>
 													<Col span={12} className='margin-top-25'>
-														<Statistic title="Health Effects Statements" value={this.state.displayResult.healthEffectsStatements} valueStyle={{fontSize: '20px'}} />
+														<Statistic title="Health Effects Statements" value={this.state.displayResult.healthEffectsStatements !== "" ? this.state.displayResult.healthEffectsStatements : "-"} valueStyle={{fontSize: '20px'}} />
 													</Col>
 													<Col span={12} className='margin-top-25'>
-														<Statistic title="Cautionary Statements" value={this.state.displayResult.cautionaryStatements} valueStyle={{fontSize: '20px'}} />
+														<Statistic title="Cautionary Statements" value={this.state.displayResult.cautionaryStatements !== "" ? this.state.displayResult.cautionaryStatements : "-"} valueStyle={{fontSize: '20px'}} />
 													</Col>
 												</Row>;
 											}
@@ -261,10 +262,10 @@ export default class AQICalculation extends React.Component {
 														<Statistic title="Sensitive Groups" value={this.state.displayResult.sensitiveGroups} valueStyle={{fontSize: '20px'}} />
 													</Col>
 													<Col span={12} className='margin-top-25'>
-														<Statistic title="Health Effects Statements" value={this.state.displayResult.healthEffectsStatements} valueStyle={{fontSize: '20px'}} />
+														<Statistic title="Health Effects Statements" value={this.state.displayResult.healthEffectsStatements !== "" ? this.state.displayResult.healthEffectsStatements : "-"} valueStyle={{fontSize: '20px'}} />
 													</Col>
 													<Col span={12} className='margin-top-25'>
-														<Statistic title="Cautionary Statements" value={this.state.displayResult.cautionaryStatements} valueStyle={{fontSize: '20px'}} />
+														<Statistic title="Cautionary Statements" value={this.state.displayResult.cautionaryStatements !== "" ? this.state.displayResult.cautionaryStatements : "-"} valueStyle={{fontSize: '20px'}} />
 													</Col>
 												</Row>;
 											}
