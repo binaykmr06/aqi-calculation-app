@@ -1,0 +1,15 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "Node service to log AQI data in Our server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Binay Kumar Panda",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.2",
+    "mysql": "^2.18.1"
+  }
+}
